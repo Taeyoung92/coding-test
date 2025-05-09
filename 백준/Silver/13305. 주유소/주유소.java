@@ -29,16 +29,14 @@ public class Main {
             }
         }
 
-        int sum = road[0] * oilPrice[0];
-
-        for(int i=1; i<road.length; i++){
-            if(oilPrice[i] < oilPrice[i-1]){
-                sum += road[i] * oilPrice[i];
-            } else {
-                sum += road[i] * oilPrice[i-1];
-            }
+    int minPrice = oilPrice[0];
+    long sum = 0;
+    for (int i = 0; i < n - 1; i++) {
+        if (oilPrice[i] < minPrice) {
+            minPrice = oilPrice[i];
         }
-
-        System.out.println(sum);
+        sum += (long) road[i] * minPrice;
+    }
+    System.out.println(sum);
     }
 }
