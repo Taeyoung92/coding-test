@@ -10,16 +10,15 @@ public class Main {
         String hash = br.readLine();
 
         long count = 0;
+        long hashingNum = 1;
+        long M = 1234567891;
 
         for(int i = 0; i < num; i++){
-            int ascii = hash.charAt(i);
+            int ascii = hash.charAt(i) - 96;
 
-            long hashingNum = 1;
+            count = (count + (ascii*hashingNum)) % M;
 
-            for(int j = 0; j < i; j++){
-                hashingNum *= 31;
-            }
-            count += (ascii - 96) * hashingNum;
+            hashingNum = (hashingNum * 31) % M;
         }
 
         System.out.println(count);
